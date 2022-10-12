@@ -1,6 +1,6 @@
 {% set name = "conda_envfile" %}
 {% set org = "tdegeus" %}
-{% set version = "0.2.1" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/{{ org }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 73e6413f6c59122a7818fc851d191ac398db1b6e33c9cf4b8f3eda3a3649b97c
+  sha256: 8b7c2e052d8d202262ce399113b16a43503339c3acdb6a04d876e41242829255
 
 build:
   number: 0
