@@ -1,6 +1,6 @@
 {% set name = "conda_envfile" %}
 {% set org = "tdegeus" %}
-{% set version = "0.3.1" %}
+{% set version = "0.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/{{ org }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 503b8dd53249fec694347f9e63f4b926b3cc1a2a57b3c4f190f87ed506bb9302
+  sha256: 00567e38b00646cfb3e95621ad92449f7b445bf83cfe6610127cdfa496fa481c
 
 build:
   number: 0
@@ -19,6 +19,7 @@ build:
     - conda_envfile_merge = {{ name }}:_conda_envfile_merge_cli
     - conda_envfile_parse = {{ name }}:_conda_envfile_parse_cli
     - conda_envfile_restrict = {{ name }}:_conda_envfile_restrict_cli
+    - conda_envfile_diff = {{ name }}:_conda_envfile_diff_cli
 
 requirements:
   host:
@@ -29,12 +30,12 @@ requirements:
     - click
     - jinja2
     - packaging
+    - prettytable
     - python >=3
     - pyyaml
 
 test:
   requires:
-    - git
     - pip
   imports:
     - {{ name }}
@@ -44,6 +45,7 @@ test:
     - conda_envfile_merge --version | grep {{ version }}
     - conda_envfile_parse --version | grep {{ version }}
     - conda_envfile_restrict --version | grep {{ version }}
+    - conda_envfile_diff --version | grep {{ version }}
 
 about:
   home: https://github.com/{{ org }}/{{ name }}
