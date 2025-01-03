@@ -1,3 +1,4 @@
+{% set python_min = '3.11' %}
 {% set version = "0.5.2" %}
 
 package:
@@ -9,7 +10,7 @@ source:
   sha256: a4a88d12b17dcada8fc9e56744aaf39a739307ccfa58dbf781ca0c5108d3aac0
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script_env: SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
   script: {{ PYTHON }} -m pip install . -vv
@@ -23,19 +24,20 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.11
+    - python {{ python_min }}
     - setuptools_scm
   run:
     - click
     - jinja2
     - packaging
     - prettytable
-    - python >=3.11
+    - python >={{ python_min }}
     - pyyaml
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   imports:
     - conda_envfile
   commands:
